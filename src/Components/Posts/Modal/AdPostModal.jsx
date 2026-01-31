@@ -1,6 +1,31 @@
 // we have pass oncles function as parameter ,close function was created in the postList component 
 
+// create variavle to handle each input date in this form 
+//  const  [title, setTitle] = useState(" ") ; and crreact onchange function to set your variavle 
+
+import { useState } from "react";
+
 const AdPostModal = ({ onClose }) =>{
+
+   const  [title, setTitle] = useState(" ") 
+   const [category, setCategory ] = useState (" ")
+   const [content, setContent]=useState("")
+   const [featureimage, setFeatureImage]= useState("")
+   const [status,setStatus] = useState(null)
+
+ // cerate function to handle submit form 
+
+   const FormSubmitDate =(event ) => {
+     event.prentDefault();
+     
+     const allData = {
+       title ,
+      categories :[category],
+      content : content,
+      featureimage : featureimage, 
+       status
+     }
+   }
 
   
    return (
@@ -10,14 +35,15 @@ const AdPostModal = ({ onClose }) =>{
             <div class="bg-white p-6 rounded-lg shadow-lg w-1/2 relative">
               <div className="loader"></div> 
               <h2 className="text-2xl mb-4">Add New Post</h2>
-              <form>
+              <form onClick={FormSubmitDate }>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="mb-4">
                     <label className="block text-sm font-medium mb-2">Title</label>
                     <input
                       type="text"
                       class="border border-gray-300 rounded w-full p-2"
-                      value=""
+                      value= {title}
+                      onChange={(e) => setTitle(e.target.value) }
                       required
                     />
                   </div>
@@ -26,6 +52,8 @@ const AdPostModal = ({ onClose }) =>{
                     <label class="block text-sm font-medium mb-2">Category</label>
                     <select
                       class="border border-gray-300 rounded w-full p-2"
+                      value={category}
+                      onChange={(e) => setCategory (e.target.value) }
                       required
                     >
                       <option value="">Select Category</option>
@@ -35,9 +63,13 @@ const AdPostModal = ({ onClose }) =>{
                     </select>
                   </div>
         
-                  <div className="mb-4 col-span-2">
+                  <div className="mb-4 col-span-2" >
                     <label className="block text-sm font-medium mb-2">Content</label>
-                    <textarea className="border border-gray-300 rounded w-full p-2" rows="6" required></textarea>
+                    <textarea className="border border-gray-300 rounded w-full p-2" rows="6" required
+                    value={content}
+                    onChange={(e)=>setContent(e.target.value)}
+                    
+                    ></textarea>
                     
                   </div>
         
@@ -45,6 +77,8 @@ const AdPostModal = ({ onClose }) =>{
                     <label className="block text-sm font-medium mb-2">Featured Image</label>
                     <input
                       type="file"
+                     
+                      onChange={(e)=> setFeatureImage(e.target.files[0])}
                     />
                   </div>
         
@@ -53,6 +87,8 @@ const AdPostModal = ({ onClose }) =>{
                     <select
                       class="border border-gray-300 rounded w-full p-2"
                       required
+                      value={status}
+                      onCanPlay={setStatus}
                     >
                       <option value="">- Select -</option>
                       <option value="publish">Publish</option>

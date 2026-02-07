@@ -8,19 +8,18 @@ const PostList = () => {
    const [showModal, setShowModal] = useState(false);
    const [showEdit, setShowEdit] = useState(false);
 
-   const [postendpoint , setPost] = useState();
+  const [postendpoint , setPost] = useState([]);
 
    const fectWordpressPost= async ()=>{
       try {
         const apiResponse= await fetch("https://dlbwebservice.com/wp-json/wp/v2/posts/",{
-          "methode": "GET",
-          "headers": {
+          method: "GET",
+          headers: {
             "content-type": "application/json"
           }
-        
         })
-        const data = await apiResponse.json();
-        setPost(date)
+  const data = await apiResponse.json();
+  setPost(data)
         
       } catch (error) {
         console.log(error)
@@ -28,13 +27,9 @@ const PostList = () => {
       }
    }
 
-   useEffect ( ()=> {
-
-    fectWordpressPost(); 
-
-   },[]
-
-   )
+  useEffect(() => {
+   fectWordpressPost();
+  }, [])
 
 
   
@@ -62,7 +57,7 @@ const PostList = () => {
                 <tr>
                   <th className="px-4 py-2">ID</th>
                   <th className="px-4 py-2">Title</th>
-                  <th class="px-4 py-2">Status</th>
+                  <th className="px-4 py-2">Status</th>
                   <th className="px-4 py-2">Category</th>
                   <th className="px-4 py-2">Featured Image</th>
                   <th className="px-4 py-2">Actions</th>
@@ -71,15 +66,15 @@ const PostList = () => {
               <tbody>
 
                 {
-                  postendpoint.map(singlePost =>(
+                  postendpoint?.map((singlePost) => (
 
-                    <tr className="text-center">
+                    <tr key={singlePost.id} className="text-center">
                   <td className="border px-4 py-2">{singlePost.id}</td>
-                  <td className="border px-4 py-2">{singlePost.title.rendered}</td>
+                  <td className="border px-4 py-2">{singlePost.title?.rendered}</td>
                   <td className="border px-4 py-2">
                     <button className="border px-4 py-2 bg-green-500 text-white">{singlePost.status}</button>
                   </td>
-                  <td className="border px-4 py-2">{singlePost?.categories[0] || "no categories"}</td>
+                  <td className="border px-4 py-2">{singlePost?.categories?.[0] || "no categories"}</td>
                   <td className="border px-4 py-2">
                     <img src="http://localhost/learrn/cms/wp-content/uploads/2024/10/No-Image-Placeholder.png" alt="Featured"
                      className="w-16 h-16 object-cover"/>
@@ -88,19 +83,15 @@ const PostList = () => {
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 
                     rounded mr-2 "  onClick={() => setShowEdit(true)} > Edit</button>
                     <button className="bg-red-500 hover:bg-red-700 text-white font-bold 
-                    py-1 px-3 rounde d" 
+                    py-1 px-3 rounded" 
                     disabled>Delete</button>
                   </td>
                 </tr>
 
 
-
                   ))
 
-
-
                 }
-
                 
               </tbody>
           </table>   

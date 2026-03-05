@@ -1,11 +1,56 @@
 # React + Vite
+when you clome this prlect and you run it if you get this error ; 
+(base) didierlokambababosiwa@didiers-iMac react-vite-tailwindcss % npm run dev
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> react-vite-tailwindcss@0.0.0 dev
+> vite
 
-Currently, two official plugins are available:
+/Users/didierlokambababosiwa/Desktop/react-vite-tailwindcss/node_modules/rollup/dist/native.js:86
+                throw new Error(
+                      ^
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Error: Cannot find module @rollup/rollup-darwin-x64. npm has a bug related to optional dependencies (https://github.com/npm/cli/issues/4828). Please try `npm i` again after removing both package-lock.json and node_modules directory.
+    at requireWithFriendlyError (/Users/didierlokambababosiwa/Desktop/react-vite-tailwindcss/node_modules/rollup/dist/native.js:86:9)
+    at Object.<anonymous> (/Users/didierlokambababosiwa/Desktop/react-vite-tailwindcss/node_modules/rollup/dist/native.js:95:76)
+    at Module._compile (node:internal/modules/cjs/loader:1554:14)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
+    at cjsLoader (node:internal/modules/esm/translators:262:5)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:196:7) {
+  [cause]: Error: Cannot find module '@rollup/rollup-darwin-x64'
+  Require stack:
+
+  Solution: type this line by one on your terminal windows 
+rm -rf node_modules
+rm package-lock.json
+npm install
+npm run dev
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## React Compiler
 
